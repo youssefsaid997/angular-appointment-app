@@ -1,0 +1,29 @@
+<table
+  border="1px"
+  class="w-75 mx-auto mt-4 table p-4"
+  *ngIf="appointments?.length"
+>
+  <thead>
+    <tr>
+      <th
+        class="text-center"
+        *ngFor="let value of getTableHeaders(tableHeaders)"
+      >
+        {{ value }}
+      </th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let appointment of appointments;index as i">
+      <td class="text-center">{{ i }}</td>
+      <td class="text-center">{{ appointment.title }}</td>
+      <td class="text-center">{{ appointment.date }}</td>
+      <td class="d-flex justify-content-center">
+        <button class="btn btn-danger" (click)="onDelete(appointment.id,i)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 *ngIf="!appointments?.length">No appointments!</h3>
